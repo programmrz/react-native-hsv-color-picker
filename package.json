@@ -19,9 +19,10 @@
     "color picker",
     "hsv color picker"
   ],
-  "main": "src/index.js",
+  "main": "index.d.ts",
   "files": [
-    "src/*"
+    "src/*",
+    "index.d.ts"
   ],
   "dependencies": {
     "chroma-js": "^2.1.0",
