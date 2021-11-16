@@ -7,7 +7,7 @@ import {
   PanResponder,
   StyleSheet,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import PropTypes from 'prop-types';
 import chroma from 'chroma-js';
 import normalizeValue from './utils';
