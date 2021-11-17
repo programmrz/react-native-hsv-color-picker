@@ -25,7 +25,7 @@ export default class HuePicker extends Component {
       '#ff0000',
     ];
     this.firePressEvent = this.firePressEvent.bind(this);
-    this.sliderY = new Animated.Value(props.barHeight * props.hue / 360);
+    this.sliderY = new Animated.Value(props.barWidth * props.hue / 360 - 8);
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onStartShouldSetPanResponderCapture: () => true,
@@ -56,22 +56,21 @@ export default class HuePicker extends Component {
       prevProps.hue !== hue
       || prevProps.barHeight !== barHeight
     ) {
-      this.sliderY.setValue(barHeight * hue / 360);
+      this.sliderY.setValue(barHeight * hue / 360 - 8);
     }
   }
 
   getContainerStyle() {
-    const { sliderSize, barWidth, containerStyle } = this.props;
-    const paddingTop = sliderSize / 2;
+    const { sliderSize, barWidth, containerStyle, barHeight } = this.props;
     const paddingLeft = sliderSize - barWidth > 0 ? (sliderSize - barWidth) / 2 : 0;
     return [
       styles.container,
       containerStyle,
       {
-        paddingTop,
-        paddingBottom: paddingTop,
+        marginTop: -barHeight / 2 + 8,
         paddingLeft,
         paddingRight: paddingLeft,
+        transform: [{ rotate: '90deg'}],
       },
     ];
   }

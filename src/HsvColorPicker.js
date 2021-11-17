@@ -34,7 +34,8 @@ export default class HsvColorPicker extends Component {
       onHuePickerPress,
       satValPickerContainerStyle,
       satValPickerBorderRadius,
-      satValPickerSize,
+      satValPickerWidth,
+      satValPickerHeight,
       satValPickerSliderSize,
       satValPickerHue,
       satValPickerSaturation,
@@ -50,7 +51,8 @@ export default class HsvColorPicker extends Component {
         <SaturationValuePicker
           containerStyle={satValPickerContainerStyle}
           borderRadius={satValPickerBorderRadius}
-          size={satValPickerSize}
+          width={satValPickerWidth}
+          height={satValPickerHeight}
           sliderSize={satValPickerSliderSize}
           hue={satValPickerHue}
           saturation={satValPickerSaturation}
@@ -83,7 +85,6 @@ export default class HsvColorPicker extends Component {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
   },
 });
@@ -103,7 +104,8 @@ HsvColorPicker.propTypes = {
   onHuePickerPress: PropTypes.func,
   satValPickerContainerStyle: ViewPropTypes.style,
   satValPickerBorderRadius: PropTypes.number,
-  satValPickerSize: PropTypes.number,
+  satValPickerWidth: PropTypes.number,
+  satValPickerHeight: PropTypes.number,
   satValPickerSliderSize: PropTypes.number,
   satValPickerHue: PropTypes.number,
   satValPickerSaturation: PropTypes.number,
@@ -130,7 +132,8 @@ HsvColorPicker.defaultProps = {
   onHuePickerPress: null,
   satValPickerContainerStyle: {},
   satValPickerBorderRadius: 0,
-  satValPickerSize: 200,
+  satValPickerWidth: 200,
+  satValPickerHeight: 256,
   satValPickerSliderSize: 24,
   satValPickerHue: 0,
   satValPickerSaturation: 1,

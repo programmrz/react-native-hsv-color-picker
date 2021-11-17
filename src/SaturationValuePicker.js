@@ -53,10 +53,10 @@ export default class SaturationValuePicker extends Component {
 
   computeSatValDrag(gestureState) {
     const { dx, dy } = gestureState;
-    const { size } = this.props;
+    const { width } = this.props;
     const { saturation, value } = this.dragStartValue;
-    const diffx = dx / size;
-    const diffy = dy / size;
+    const diffx = dx / width;
+    const diffy = dy / width;
     return {
       saturation: normalizeValue(saturation + diffx),
       value: normalizeValue(value - diffy),
@@ -66,10 +66,10 @@ export default class SaturationValuePicker extends Component {
   computeSatValPress(event) {
     const { nativeEvent } = event;
     const { locationX, locationY } = nativeEvent;
-    const { size } = this.props;
+    const { width } = this.props;
     return {
-      saturation: normalizeValue(locationX / size),
-      value: 1 - normalizeValue(locationY / size),
+      saturation: normalizeValue(locationX / width),
+      value: 1 - normalizeValue(locationY / width),
     };
   }
 
@@ -95,7 +95,8 @@ export default class SaturationValuePicker extends Component {
 
   render() {
     const {
-      size,
+      width,
+      height,
       sliderSize,
       hue,
       value,
@@ -109,8 +110,8 @@ export default class SaturationValuePicker extends Component {
           styles.container,
           containerStyle,
           {
-            height: size + sliderSize,
-            width: size + sliderSize,
+            height: height + sliderSize,
+            width: width + sliderSize,
           },
         ]}
       >
@@ -132,8 +133,8 @@ export default class SaturationValuePicker extends Component {
             >
               <View
                 style={{
-                  height: size,
-                  width: size,
+                  height,
+                  width,
                 }}
               />
             </LinearGradient>
@@ -150,8 +151,8 @@ export default class SaturationValuePicker extends Component {
               borderWidth: sliderSize / 10,
               backgroundColor: this.getCurrentColor(),
               transform: [
-                { translateX: size * saturation },
-                { translateY: size * (1 - value) },
+                { translateX: width * saturation },
+                { translateY: width * (1 - value) },
               ],
             },
           ]}
@@ -180,7 +181,8 @@ const styles = StyleSheet.create({
 SaturationValuePicker.propTypes = {
   containerStyle: ViewPropTypes.style,
   borderRadius: PropTypes.number,
-  size: PropTypes.number,
+  width: PropTypes.number,
+  height: PropTypes.number,
   sliderSize: PropTypes.number,
   hue: PropTypes.number,
   saturation: PropTypes.number,
@@ -195,7 +197,8 @@ SaturationValuePicker.propTypes = {
 SaturationValuePicker.defaultProps = {
   containerStyle: {},
   borderRadius: 0,
-  size: 200,
+  width: 200,
+  height: 256,
   sliderSize: 24,
   hue: 0,
   saturation: 1,
