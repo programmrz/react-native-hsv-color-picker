@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import PropTypes from 'prop-types';
-import chroma from 'chroma-js';
+import { colord } from 'colord';
 import normalizeValue from './utils';
 
 export default class SaturationValuePicker extends Component {
@@ -44,11 +44,11 @@ export default class SaturationValuePicker extends Component {
 
   getCurrentColor() {
     const { hue, saturation, value } = this.props;
-    return chroma.hsv(
-      hue,
-      saturation,
-      value,
-    ).hex();
+    return colord({
+      h: hue,
+      s: saturation,
+      v: value,
+    }).toHex();
   }
 
   computeSatValDrag(gestureState) {
@@ -120,7 +120,7 @@ export default class SaturationValuePicker extends Component {
             style={[{ borderRadius }, styles.linearGradient]}
             colors={[
               '#fff',
-              chroma.hsl(hue, 1, 0.5).hex(),
+              colord(`hsl(${hue}, 1, 0.5)`).toHex(),
             ]}
             start={{ x: 0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}
