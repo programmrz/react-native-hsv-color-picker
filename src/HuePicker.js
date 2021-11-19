@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import PropTypes from 'prop-types';
-import { colord } from 'colord';
+import chroma from 'chroma-js';
 import normalizeValue from './utils';
 
 export default class HuePicker extends Component {
@@ -77,7 +77,7 @@ export default class HuePicker extends Component {
 
   getCurrentColor() {
     const { hue } = this.props;
-    return colord(`hsl(${hue}, 1, 0.5)`).toHex();
+    return chroma.hsl(hue, 1, 0.5).hex();
   }
 
   computeHueValueDrag(gestureState) {
