@@ -53,10 +53,10 @@ export default class SaturationValuePicker extends Component {
 
   computeSatValDrag(gestureState) {
     const { dx, dy } = gestureState;
-    const { width } = this.props;
+    const { width, height } = this.props;
     const { saturation, value } = this.dragStartValue;
     const diffx = dx / width;
-    const diffy = dy / width;
+    const diffy = dy / height;
     return {
       saturation: normalizeValue(saturation + diffx),
       value: normalizeValue(value - diffy),
@@ -66,10 +66,10 @@ export default class SaturationValuePicker extends Component {
   computeSatValPress(event) {
     const { nativeEvent } = event;
     const { locationX, locationY } = nativeEvent;
-    const { width } = this.props;
+    const { width, height } = this.props;
     return {
       saturation: normalizeValue(locationX / width),
-      value: 1 - normalizeValue(locationY / width),
+      value: 1 - normalizeValue(locationY / height),
     };
   }
 
@@ -140,6 +140,8 @@ export default class SaturationValuePicker extends Component {
             </LinearGradient>
           </LinearGradient>
         </TouchableWithoutFeedback>
+        {console.log(saturation)}
+        {console.log(value)}
         <View
           {...this.panResponder.panHandlers}
           style={[
@@ -152,7 +154,7 @@ export default class SaturationValuePicker extends Component {
               backgroundColor: this.getCurrentColor(),
               transform: [
                 { translateX: width * saturation },
-                { translateY: width * (1 - value) },
+                { translateY: height * (1 - value) },
               ],
             },
           ]}
