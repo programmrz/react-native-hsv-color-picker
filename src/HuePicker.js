@@ -81,11 +81,11 @@ export default class HuePicker extends Component {
   }
 
   computeHueValueDrag(gestureState) {
-    const { dy } = gestureState;
+    const { dx } = gestureState;
     const { barHeight } = this.props;
     const { dragStartValue } = this;
-    const diff = dy / barHeight;
-    const updatedHue = normalizeValue(dragStartValue / 360 + diff) * 360;
+    const diff = dx / barHeight;
+    const updatedHue = normalizeValue(dragStartValue / 360 - diff) * 360;
     return updatedHue;
   }
 

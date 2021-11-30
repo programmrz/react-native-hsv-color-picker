@@ -140,8 +140,6 @@ export default class SaturationValuePicker extends Component {
             </LinearGradient>
           </LinearGradient>
         </TouchableWithoutFeedback>
-        {console.log(saturation)}
-        {console.log(value)}
         <View
           {...this.panResponder.panHandlers}
           style={[
