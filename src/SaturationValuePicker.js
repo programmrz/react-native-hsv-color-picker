@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { ViewPropTypes } from 'deprecated-react-native-prop-types';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import PropTypes from 'prop-types';
 import chroma from 'chroma-js';
 import normalizeValue from './utils';
